@@ -4,9 +4,9 @@
 $dossierDonneEnParamètre = filter_input(INPUT_GET, "dossier", FILTER_SANITIZE_SPECIAL_CHARS);
 //vérifier si le dossier existe
 if ($dossierDonneEnParamètre == ""
-    || strpos($dossierDonneEnParamètre, "/") !== false
-    || strpos($dossierDonneEnParamètre, "\\") !== false
-    || !is_dir("Photos/$dossierDonneEnParamètre")) {
+        || strpos($dossierDonneEnParamètre, "/") !== false
+        || strpos($dossierDonneEnParamètre, "\\") !== false
+        || !is_dir("Photos/$dossierDonneEnParamètre")) {
     http_response_code(404);
     echo "Le dossier n'existe pas";
     exit; //pour ne pas executer le reste du code
@@ -28,6 +28,14 @@ include("header.php");
         }
         ?>
     </div>
+    <h2>Ajouter un chaton</h2>
+    <!--Pour pouvoir envoyer un fichier j'ajoute enctype="multipart/form-data"-->
+    <form action="actions/ajouterChaton.php" method="post" enctype="multipart/form-data">
+        Ajoutez un chaton : <input type="file" required name="fichier">
+        <br>
+        <input type="hidden" name="nomDuDossier" value="<?php echo $dossierDonneEnParamètre ?>">
+        <input type="submit" value="OK">
+    </form>
 <?php
 include("footer.php");
 
