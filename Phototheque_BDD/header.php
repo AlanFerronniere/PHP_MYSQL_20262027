@@ -22,9 +22,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <?php
-                    //je vais chercher les catégories dans la BDD
+                    include_once "Config.php";
+                    $db = new PDO('mysql:host='.Config::HOST.';dbname='.Config::DBNAME, Config::USER, Config::PASSWORD);
+                    //je vais chercher les catégories/**/ dans la BDD
                     //1 : connexion à la BDD
-                    $db = new PDO('mysql:host=localhost;dbname=alan', 'alan', 'aS3pVBYCOrpi');
+
                     //2: préparer une requête SQL
                     $req = $db->prepare('SELECT * FROM categories');
                     //3: lancer la requete et récupérer le résultat
