@@ -56,10 +56,10 @@ $extension = $extensionsAutorisees[$mimeType];
 $nomFichier = uniqid("chaton_", true) . "." . $extension;
 $urlPhoto = "Photos/" . $nomFichier;
 
-if (!move_uploaded_file($fichier["tmp_name"], $dossierPhotos . "/" . $nomFichier)) {
-    header("location: ../categorie.php?id=" . $idCategorie . "&erreur=" . urlencode("Impossible d'enregistrer la photo."));
+if (!move_uploaded_file($fichier["tmp_name"], "../Photos/" . $nomFichier)) {
+    header("location: ../categorie.php?id=" . $idCategorie . "&erreur=" . urlencode("Impossible d'enregistrer la photo. (".("../Photos/" . $nomFichier).")"));
     exit;
-}
+} 
 
 // Enregistrement en BDD
 include_once "../Config.php";

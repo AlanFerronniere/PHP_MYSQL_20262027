@@ -32,6 +32,10 @@ $categories = $req->fetchAll();
                     class="btn btn-warning">
                     🖍️
                 </a>
+                <a href="supprimerCategorie.php?id=<?php echo $categorie["id"] ?>"
+                    class="btn btn-danger">
+                    🗑️
+                </a>
             </td>
         </tr>
         <?php
