@@ -25,7 +25,7 @@ if (count($categories) != 1) {
     http_response_code(404);
     die("Pas de catégorie pour l'id $id");
 }
-$categorie = $categories[0];
+$maCategorie = $categories[0];
 
 // Récupérer les chatons de cette catégorie
 $reqChatons = $db->prepare('SELECT * FROM chatons WHERE idCategorie = :idCategorie');
@@ -33,12 +33,12 @@ $reqChatons->bindParam(":idCategorie", $id, PDO::PARAM_INT);
 $reqChatons->execute();
 $chatons = $reqChatons->fetchAll();
 
-$title = $categorie["nom"];
+$title = $maCategorie["nom"];
 include "header.php";
 ?>
 <main class="container mt-4">
-    <h1><?php echo htmlentities($categorie["nom"]) ?></h1>
-    <p><?php echo htmlentities($categorie["description"]) ?></p>
+    <h1><?php echo htmlentities($maCategorie["nom"]) ?></h1>
+    <p><?php echo htmlentities($maCategorie["description"]) ?></p>
 
     <?php if (isset($_GET["erreur"])): ?>
         <div class="alert alert-danger">
