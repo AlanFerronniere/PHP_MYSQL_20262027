@@ -59,6 +59,10 @@ include "header.php";
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlentities($chaton["nom"]) ?></h5>
                             <p class="card-text">Âge : <?php echo htmlentities($chaton["age"]) ?> an(s)</p>
+                            <a href="supprimerChaton.php?id=<?php echo $chaton["id"] ?>"
+                               class="btn btn-danger btn-sm">
+                                🗑️ Supprimer
+                            </a>
                         </div>
                     </div>
                 </div>
